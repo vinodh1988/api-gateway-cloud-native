@@ -1,0 +1,16 @@
+server:
+  port: 9000
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: LoadModule
+        uri: http://172.18.0.7:9966/
+        predicates:
+        - Path=/api/**
+      - id: DBService
+        uri: http://172.18.0.6:9494/
+        predicates:
+        - Path=/db-api/**
+     
